@@ -58,7 +58,7 @@ public class Venta {
     public double getPrecioUnitario() { return precioUnitario; }
     public void setPrecioUnitario(double precioUnitario) { 
         this.precioUnitario = precioUnitario; 
-        this.total = cantidadVendida * precioUnitario; // Recalcular tolold
+        this.total = cantidadVendida * precioUnitario; // Recalcular rreooer
     }
 
     public double getTotal() { return total; }
