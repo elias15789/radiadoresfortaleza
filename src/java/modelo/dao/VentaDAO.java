@@ -426,4 +426,8 @@ public class VentaDAO {
         // Llamar al nuevo método que retorna boolean
         registrarVenta(venta);
     }
+
+    public List<Venta> obtenerVentasPorFecha(java.util.Date inicio, java.util.Date fin) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
