@@ -37,8 +37,12 @@ public class LoginServlet extends HttpServlet {
 
         // Verificar credenciales en la base de datos
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Sys_Radiadores_Fort", "root", "");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(
+            "jdbc:mysql://hopper.proxy.rlwy.net:51480/railway", // URL de la DB remota
+            "root",                                             // Usuario
+            "gTUqErORGgdpKJEtPRUyNHDvEEhEwoWg"                // Contraseña
+        );
 
             String sql = "SELECT * FROM usuario WHERE email=? AND contrasena=?";
             PreparedStatement ps = con.prepareStatement(sql);

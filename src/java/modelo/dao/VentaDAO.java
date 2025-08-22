@@ -9,9 +9,10 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 
 public class VentaDAO {
-    private final String jdbcURL = "jdbc:mysql://localhost:3306/Sys_Radiadores_Fort";
+    private final String jdbcURL = "jdbc:mysql://localhost:3306/sys_radiadores_fort";
     private final String jdbcUser = "root";
     private final String jdbcPassword = "";
+
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(jdbcURL, jdbcUser, jdbcPassword);
