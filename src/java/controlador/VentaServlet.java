@@ -22,7 +22,7 @@ public class VentaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Control de acceso por rol: ADMIN y VENTAS/ASESOR pueden acceder
+        // Control de acceso por rol: ADMIN y VENTAS/ASESOR pueden accededwdr
         try {
             HttpSession session = request.getSession(false);
             String rol = session != null ? (String) session.getAttribute("rolUsuario") : null;
