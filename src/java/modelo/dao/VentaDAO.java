@@ -9,9 +9,9 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 
 public class VentaDAO {
-    private final String jdbcURL = "jdbc:mysql://localhost:3306/sys_radiadores_fort";
+    private final String jdbcURL = "jdbc:mysql://hopper.proxy.rlwy.net:51480/railway";
     private final String jdbcUser = "root";
-    private final String jdbcPassword = "";
+    private final String jdbcPassword = "gTUqErORGgdpKJEtPRUyNHDvEEhEwoWg";
 
 
     private Connection getConnection() throws SQLException {
@@ -242,35 +242,42 @@ public class VentaDAO {
      * Obtiene el total de ventas del día
      */
     public double obtenerTotalVentasHoy() {
-        // Intentar con la nueva estructura primero
-        String sql = "SELECT COALESCE(SUM(total), 0) as total_hoy FROM ventas WHERE DATE(fecha) = CURDATE()";
+    // Consulta para TIMESTAMP ajustando a la zona horaria de Lima
+    String sql = "SELECT COALESCE(SUM(total), 0) as total_hoy " +
+                 "FROM ventas " +
+                 "WHERE CONVERT_TZ(fecha, '+00:00', '-05:00') >= CURDATE() " +
+                 "AND CONVERT_TZ(fecha, '+00:00', '-05:00') < CURDATE() + INTERVAL 1 DAY";
+    try (Connection con = getConnection();
+         PreparedStatement ps = con.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+        
+        if (rs.next()) {
+            return rs.getDouble("total_hoy");
+        }
+    } catch (Exception e) {
+        System.err.println("Error con nueva estructura, intentando con estructura antigua: " + e.getMessage());
+        
+        // Consulta con la columna fecha_venta en caso de estructura antigua
+        String sqlAntigua = "SELECT COALESCE(SUM(total), 0) as total_hoy " +
+                            "FROM ventas " +
+                            "WHERE CONVERT_TZ(fecha_venta, '+00:00', '-05:00') >= CURDATE() " +
+                            "AND CONVERT_TZ(fecha_venta, '+00:00', '-05:00') < CURDATE() + INTERVAL 1 DAY";
         try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
+             PreparedStatement ps = con.prepareStatement(sqlAntigua);
              ResultSet rs = ps.executeQuery()) {
             
             if (rs.next()) {
                 return rs.getDouble("total_hoy");
             }
-        } catch (Exception e) {
-            System.err.println("Error con nueva estructura, intentando con estructura antigua: " + e.getMessage());
-            
-            // Si falla, intentar con estructura antigua
-            String sqlAntigua = "SELECT COALESCE(SUM(total), 0) as total_hoy FROM ventas WHERE DATE(fecha_venta) = CURDATE()";
-            try (Connection con = getConnection();
-                 PreparedStatement ps = con.prepareStatement(sqlAntigua);
-                 ResultSet rs = ps.executeQuery()) {
-                
-                if (rs.next()) {
-                    return rs.getDouble("total_hoy");
-                }
-            } catch (Exception e2) {
-                System.err.println("Error al obtener total de ventas hoy: " + e2.getMessage());
-                e2.printStackTrace();
-            }
+        } catch (Exception e2) {
+            System.err.println("Error al obtener total de ventas hoy: " + e2.getMessage());
+            e2.printStackTrace();
         }
-        return 0.0;
     }
+    return 0.0;
+}
 
+    
     /**
      * Obtiene el total de ventas del mes
      */

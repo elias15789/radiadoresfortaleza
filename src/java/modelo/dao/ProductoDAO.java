@@ -7,10 +7,10 @@ import java.util.List;
 
 public class ProductoDAO {
 
-    private final String jdbcURL = "jdbc:mysql://localhost:3306/sys_radiadores_fort";
+    private final String jdbcURL = "jdbc:mysql://hopper.proxy.rlwy.net:51480/railway";
     private final String jdbcUser = "root";
-    private final String jdbcPassword = "";
-    
+    private final String jdbcPassword = "gTUqErORGgdpKJEtPRUyNHDvEEhEwoWg";
+
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(jdbcURL, jdbcUser, jdbcPassword);
