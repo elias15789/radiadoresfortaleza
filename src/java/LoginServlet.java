@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // Validar correo
+        // Validars correo
         if (!validarCorreo(email)) {
             request.setAttribute("error", "El correo electrónico no es válido. No debe contener números ni mayúsculas.");
             request.getRequestDispatcher("login.jsp").forward(request, response);

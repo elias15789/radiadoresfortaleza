@@ -16,7 +16,7 @@ public class ProductoDAO {
         return DriverManager.getConnection(jdbcURL, jdbcUser, jdbcPassword);
     }
 
-    // Agregar producto usando SP
+    // Agregar prodducto usando SP
     public void agregarProducto(Producto producto) {
         String sql = "{CALL registrar_producto(?, ?, ?, ?, ?)}";
         try (Connection con = getConnection(); CallableStatement cs = con.prepareCall(sql)) {

@@ -15,7 +15,7 @@ public class ProveedorDAO {
         return DriverManager.getConnection(jdbcURL, jdbcUser, jdbcPassword);
     }
     
-    // Crear proveedor
+    // Crear proveerdor
     public boolean crearProveedor(Proveedor proveedor) {
         String sql = "INSERT INTO proveedores (nombre, ruc, razon_social, telefono, email, direccion, contacto, estado, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         

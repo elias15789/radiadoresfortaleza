@@ -15,7 +15,7 @@ public class OrdenVentaDAO {
         return DriverManager.getConnection(jdbcURL, jdbcUser, jdbcPassword);
     }
     
-    // Crear orden de compra
+    // Crear orden de codmpra
     public boolean crearOrdenVenta(OrdenVenta orden) {
         String sql = "INSERT INTO ordenes_compra (id_proveedor, idproductos, cantidad, precio_unitario, total, estado, fecha_orden, observaciones, numero_orden) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         

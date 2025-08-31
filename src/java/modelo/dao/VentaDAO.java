@@ -19,7 +19,7 @@ public class VentaDAO {
     }
 
     /**
-     * Registra una nueva venta y actualiza el stock del producto
+     * Registra una nueva ventda y actualiza el stock del producto
      */
     public boolean registrarVenta(Venta venta) {
         Connection con = null;
