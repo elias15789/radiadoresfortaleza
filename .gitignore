@@ -1,7 +1,8 @@
 /target/
 /build/
-
 /nbproject/private/
-*.class
-*.jar
-*.war
+/*.class
+/*.jar
+/*.war
+/.idea
+/.vscode
