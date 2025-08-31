@@ -1,5 +1,6 @@
 # Usar Tomcat 9 con Java 17
-FROM tomcat:9.0-jdk17
+FROM tomcat:10.1-jdk17
+
 
 # Eliminar aplicaciones por defecto
 RUN rm -rf /usr/local/tomcat/webapps/*
