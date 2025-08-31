@@ -6,7 +6,7 @@ FROM tomcat:10.1-jdk17
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copiar tu WAR ya compilado
-COPY ROOT.war /usr/local/tomcat/webapps/ROOT.war
+COPY radiadores-fortaleza-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
 
 # Exponer puerto 8080
