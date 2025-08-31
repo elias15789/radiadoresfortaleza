@@ -1,0 +1,12 @@
+modelo\OrdenVenta.class
+controlador\VentaServlet.class
+modelo\dao\ProductoDAO.class
+modelo\Proveedor.class
+modelo\Venta.class
+controlador\CatalogoServlet.class
+modelo\Producto.class
+modelo\dao\VentaDAO.class
+controlador\AlmacenServlet.class
+modelo\dao\ProveedorDAO.class
+modelo\dao\OrdenVentaDAO.class
+controlador\LoginServlet.class
