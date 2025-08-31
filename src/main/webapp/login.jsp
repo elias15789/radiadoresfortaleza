@@ -47,7 +47,7 @@
     </div>
     
     <h1>Inicio de Sesión</h1>
-    <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
+    <form action="LoginServlet" method="POST">
         <div class="username">  
             <input 
                 oninput="removeNumbers(this); validateEmail()" 
